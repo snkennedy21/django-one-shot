@@ -1,7 +1,8 @@
 from django.urls import path
-from .views import todo_list_detail, view_lists
+from . import views
 
 urlpatterns = [
-  path('', view_lists, name="todo_list_list"),
-  path('<int:pk>', todo_list_detail, name="todo_list_detail")
+  path('', views.view_lists, name="todo_list_list"),
+  path('<int:pk>', views.todo_list_detail, name="todo_list_detail"),
+  path('create/', views.create_todo_list, name="todo_list_create")
 ]
