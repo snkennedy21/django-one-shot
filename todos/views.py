@@ -1,7 +1,8 @@
+from wsgiref.handlers import format_date_time
 from django.shortcuts import redirect, render
 from django.urls import is_valid_path
 from .models import TodoList, TodoItem
-from .forms import TodoListForm
+from .forms import TodoListForm, TodoItemForm
 
 
 
@@ -65,3 +66,21 @@ def delete_todo_list(request, pk):
     "obj": todo_list
   }
   return render(request, 'todos/delete.html', context)
+
+
+def create_item(request):
+  form = TodoItemForm()
+
+  if request.method == "POST":
+
+    form = TodoItemForm(request.POST)
+    if form.is_valid():
+      todo_item = form.save()
+
+      return redirect('todo_list_detail', todo_item.list.pk)
+
+  context = {
+    "form": form
+  }
+
+  return render(request, 'todos/create_item.html', context)

@@ -7,5 +7,6 @@ urlpatterns = [
   path('<int:pk>', views.todo_list_detail, name="todo_list_detail"),
   path('create/', views.create_todo_list, name="todo_list_create"),
   path('<int:pk>/edit/', views.update_todo_list, name="todo_list_update"),
-  path('<int:pk>/delete/', views.delete_todo_list, name="todo_list_delete")
+  path('<int:pk>/delete/', views.delete_todo_list, name="todo_list_delete"),
+  path('items/create/', views.create_item, name="todo_item_create")
 ]
