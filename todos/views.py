@@ -54,3 +54,14 @@ def update_todo_list(request, pk):
     'form': form
   }
   return render(request, 'todos/update.html', context)
+
+
+def delete_todo_list(request, pk):
+  todo_list = TodoList.objects.get(id=pk)
+  if request.method == 'POST':
+    todo_list.delete()
+    return redirect('todo_list_list')
+  context = {
+    "obj": todo_list
+  }
+  return render(request, 'todos/delete.html', context)

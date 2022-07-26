@@ -14,6 +14,7 @@
       <h1>{{list.name}}</h1>
       <p>
         <a href="{% url 'todo_list_update' list.pk %}">Edit</a>
+        <a href="{% url 'todo_list_delete' list.pk %}">Delete</a>
       </p>
       <table>
         <thead>
